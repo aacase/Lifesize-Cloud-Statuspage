@@ -1,21 +1,87 @@
 <template name="statuspage">
 
-	
 <div class="ui stackable grid">
 	<div class="three column row">
 		<div class="column center aligned">PlaceHolder Text</div>
-		<div class="column center aligned"><div class="ui horizontal divider">{{status}}</div><div class= "circle " id='statusColor'></div></div>
+		<div class="column center aligned"><div class="ui horizontal divider">{{overallStatus}}</div><div class= "circle " id='statusColor'></div></div>
 		<div class="column center aligned" id='incidentTable'>
-		{{#if incidentTable}}
-			<div>Woooooo</div>
-		{{else}}
-		<div>A table will be rendered here showing the incidents</div>
-		{{/if}}
-
+			{{#if incidentTable}}
+			<!-- <div>Woooooo</div> -->
+			<table class="ui  red inverted celled striped table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Status</th>
+						<th>Notes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>User 1</td>
+						<td>Data</td>
+						<td>Data</td>
+					</tr>
+					<tr>
+						<td>User 3</td>
+						<td>Data</td>
+						<td>Data</td>
+					</tr>
+					<tr>
+						<td>User 2</td>
+						<td>Denied</td>
+						<td>Data</td>
+					</tr>
+				</tbody>
+				<tfoot>
+				<tr>
+					<th>Footer</th>
+					<th>Footer</th>
+					<th></th>
+				</tr>
+				</tfoot>
+			</table>
+			{{else}}
+			<div>A table will be rendered here showing the incidents</div>
+			
+			{{/if}}
 		</div>
-	</div>	
+	</div>
+	<div class="one column row">
+		<div class="column">
+			<div class="ui accordion">
+				<div class="ui header title">
+					<i class="dropdown icon"></i>
+					Previous Incidents 
+				</div>
+				<div class="content">
+					<table class="ui purple inverted celled striped  table">
+									<thead>
+										<tr>
+											<th>Incident</th>
+											<th>Impact</th>
+											<th>Status</th>
+											<th>Resolved at</th>
+										</tr>
+									</thead>
+									<tbody>
+										{{#each incidentHistoryTable}}
+										<tr>
+											<td><a href="{{shortlink}}">{{name}}</a></td>
+											<td>{{impact}}</td>
+											<td>{{status}}</td>
+											<td>{{resolved_at}}</td>
+										</tr>
+										{{/each}}
+										
+									</tbody>
+									
+					</table>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
 </div>
-
-
 
 </template>

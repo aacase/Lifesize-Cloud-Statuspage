@@ -3,6 +3,8 @@
 
 Template.statuspage.rendered = function (){
 
+	$('.accordion').accordion();
+
 	//Main status. This will return the overall health of Cloud
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/status.json', function (data) {
 	  Session.set('result', data.status.description);
@@ -30,43 +32,26 @@ Template.statuspage.rendered = function (){
 	  	$('#incidentTable').addClass("codeGreen");
 	  }
 
-
-	  
-	   // if (Session.get('unresolved')=="All Systems Operational"){
-	   // 	$('#statusColor').addClass("codeGreen");
-	   // }
-	   // else if (Session.get('unresolved')=="Partial System Outage")
-	   // 	$('#statusColor').addClass("codeRed");
 	});
 
-	
+	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/incidents.json', function (data) {
+	  Session.set('incidentHistory', data.incidents);
+	  console.log('incident history data return', Session.get('incidentHistory'));
 
-
-
-
+	});
 	
 }
 
 
 
 Template.statuspage.helpers({
-	status : function(){return Session.get('result')},
-	incidentTable: function(){return Session.get('currentIncidents')}
-
-
-	// currentIncident: Session.get('currentIncidents')
-
-
-	// currentIncident: function(){
-	// 	if (Session.get('unresolved').length > 0){
-	// 		return "true"
-	// 	}
-	// 	else{
-	// 		return "false"
-	// 	}
-	// }
+	overallStatus : function(){return Session.get('result')},
+	incidentTable: function(){return Session.get('currentIncidents')},
+	incidentHistoryTable: function(){return Session.get('incidentHistory')}
 
 });
+
+
 
 
 
