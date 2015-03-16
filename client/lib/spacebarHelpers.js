@@ -25,3 +25,15 @@ Template.registerHelper('debug', function (optionalValue) {
 Template.registerHelper('constant', function (what) {
   return Meteor.App[what.toUpperCase()];
 });
+
+Template.registerHelper('isOperational', function (status) {
+  if (status == "operational"){
+    console.log("Yippe Cai YAY");
+    $('#tableRowColor').addClass('codeGreen');
+    return status;
+  }
+  else{
+    $('#tableRowColor').addClass('codeRed');
+  }
+});
+

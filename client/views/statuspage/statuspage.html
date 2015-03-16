@@ -1,12 +1,11 @@
 <template name="statuspage">
 
 <div class="ui stackable grid">
-	<div class="three column row">
-		<div class="column center aligned">PlaceHolder Text</div>
+	<div class="two column row">
+		
 		<div class="column center aligned"><div class="ui horizontal divider">{{overallStatus}}</div><div class= "circle " id='statusColor'></div></div>
 		<div class="column center aligned" id='incidentTable'>
 			{{#if incidentTable}}
-			<!-- <div>Woooooo</div> -->
 			<table class="ui  red inverted celled striped table">
 				<thead>
 					<tr>
@@ -41,10 +40,62 @@
 				</tfoot>
 			</table>
 			{{else}}
-			<div>A table will be rendered here showing the incidents</div>
+			<div><div class="ui horizontal divider">Cloud Services</div></div>
+
+			<table class="ui  green inverted celled striped  table">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each subServicesTable}}
+								<tr>
+									
+									<td>{{name}}</td>
+									<td>{{isOperational status}}</td>
+								</tr>
+								{{/each}}
+								
+							</tbody>
+							
+			</table>
 			
 			{{/if}}
 		</div>
+	</div>
+	<div class="row center aligned">
+	<div class="fourteen wide column">
+		{{#if incidentTable}}
+		<h1>Current Incident:</h1>
+			<table class="ui purple inverted celled striped  table">
+							<thead>
+								<tr>
+									<th>Incident</th>
+									<th>Impact</th>
+									<th>Status</th>
+									<th>Updated At</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each currentIncidentEvents}}
+								<tr>
+									<td><a href="{{shortlink}}">{{name}}</a></td>
+									<td>{{impact}}</td>
+									<td>{{status}}</td>
+									<td>{{updated_at}}</td>
+								</tr>
+								{{/each}}
+								
+							</tbody>
+							
+			</table>
+		{{else}}
+		<h1> Nothin' to report, Sir</h1>
+		{{/if}}
+	</div>	
+
 	</div>
 	<div class="one column row">
 		<div class="column">
