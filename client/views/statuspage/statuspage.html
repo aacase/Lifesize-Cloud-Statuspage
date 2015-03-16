@@ -1,31 +1,18 @@
 <template name="statuspage">
 
-	<!-- <div class="ui horizontal divider">{{status}}</div> -->
 	
-		<!-- <div class="four column center aligned">
-		
-				
-			  	<div class= "circle  " id='statusColor'></div>
-			  
-			
-		</div> -->
-
-		<!-- <div class="center aligned">
-			<div class= "center aligned four wide ">
-				Why is this centered and the div is not
-				<div class= "circle centered " id='statusColor'></div>
-			</div>
-		</div>
-
-		<div class="center aligned">
-			<h1 class="center aligned">What does this work</h1>
-		</div> -->
-
 <div class="ui stackable grid">
 	<div class="three column row">
 		<div class="column center aligned">PlaceHolder Text</div>
 		<div class="column center aligned"><div class="ui horizontal divider">{{status}}</div><div class= "circle " id='statusColor'></div></div>
-		<div class="column center aligned">Placeholder Text</div>
+		<div class="column center aligned" id='incidentTable'>
+		{{#if incidentTable}}
+			<div>Woooooo</div>
+		{{else}}
+		<div>A table will be rendered here showing the incidents</div>
+		{{/if}}
+
+		</div>
 	</div>	
 </div>
 
