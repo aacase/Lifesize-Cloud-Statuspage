@@ -1,10 +1,9 @@
 <template name="statuspage">
-
 <div class="ui stackable grid">
-	<div class="two column row">
+	<div class="two column row center aligned">
 		
-		<div class="column center aligned"><div class="ui horizontal divider">{{overallStatus}}</div><div class= "circle " id='statusColor'></div></div>
-		<div class="column center aligned" id='incidentTable'>
+		<div class="six wide column "><div class="ui horizontal divider">{{overallStatus}}</div><div class= "circle " id='statusColor'></div></div>
+		<div class="eight wide column " id='incidentTable'>
 			{{#if incidentTable}}
 			<table class="ui  red inverted celled striped table">
 				<thead>
@@ -41,91 +40,89 @@
 			</table>
 			{{else}}
 			<div><div class="ui horizontal divider">Cloud Services</div></div>
-
 			<table class="ui  green inverted celled striped  table">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Status</th>
-								</tr>
-							</thead>
-							<tbody>
-								{{#each subServicesTable}}
-								<tr>
-									
-									<td>{{name}}</td>
-									<td>{{isOperational status}}</td>
-								</tr>
-								{{/each}}
-								
-							</tbody>
-							
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each subServicesTable}}
+					<tr>
+						
+						<td>{{name}}</td>
+						<td>{{isOperational status}}</td>
+					</tr>
+					{{/each}}
+					
+				</tbody>
+				
 			</table>
 			
 			{{/if}}
 		</div>
 	</div>
 	<div class="row center aligned">
-	<div class="fourteen wide column">
-		{{#if incidentTable}}
-		<h1>Current Incident:</h1>
+		<div class="fourteen wide column">
+			{{#if incidentTable}}
+			<h1>Current Incident:</h1>
 			<table class="ui purple inverted celled striped  table">
-							<thead>
-								<tr>
-									<th>Incident</th>
-									<th>Impact</th>
-									<th>Status</th>
-									<th>Updated At</th>
-								</tr>
-							</thead>
-							<tbody>
-								{{#each currentIncidentEvents}}
-								<tr>
-									<td><a href="{{shortlink}}">{{name}}</a></td>
-									<td>{{impact}}</td>
-									<td>{{status}}</td>
-									<td>{{updated_at}}</td>
-								</tr>
-								{{/each}}
-								
-							</tbody>
-							
+				<thead>
+					<tr>
+						<th>Incident</th>
+						<th>Impact</th>
+						<th>Status</th>
+						<th>Updated At</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each currentIncidentEvents}}
+					<tr>
+						<td><a href="{{shortlink}}">{{name}}</a></td>
+						<td>{{impact}}</td>
+						<td>{{status}}</td>
+						<td>{{updated_at}}</td>
+					</tr>
+					{{/each}}
+					
+				</tbody>
+				
 			</table>
-		{{else}}
-		<h1> Nothin' to report, Sir</h1>
-		{{/if}}
-	</div>	
-
+			{{else}}
+			<h1> Nothin' to report, Sir</h1>
+			{{/if}}
+		</div>
 	</div>
 	<div class="one column row">
 		<div class="column">
 			<div class="ui accordion">
 				<div class="ui header title">
 					<i class="dropdown icon"></i>
-					Previous Incidents 
+					Previous Incidents
 				</div>
 				<div class="content">
 					<table class="ui purple inverted celled striped  table">
-									<thead>
-										<tr>
-											<th>Incident</th>
-											<th>Impact</th>
-											<th>Status</th>
-											<th>Resolved at</th>
-										</tr>
-									</thead>
-									<tbody>
-										{{#each incidentHistoryTable}}
-										<tr>
-											<td><a href="{{shortlink}}">{{name}}</a></td>
-											<td>{{impact}}</td>
-											<td>{{status}}</td>
-											<td>{{resolved_at}}</td>
-										</tr>
-										{{/each}}
-										
-									</tbody>
-									
+						<thead>
+							<tr>
+								<th>Incident</th>
+								<th>Impact</th>
+								<th>Status</th>
+								<th>Resolved at</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each incidentHistoryTable}}
+							<tr>
+								<td><a href="{{shortlink}}">{{name}}</a></td>
+								<td>{{impact}}</td>
+								<td>{{status}}</td>
+								<td>{{resolved_at}}</td>
+							</tr>
+							{{/each}}
+							
+						</tbody>
+						
 					</table>
 				</div>
 				
@@ -134,5 +131,4 @@
 	</div>
 	
 </div>
-
 </template>
