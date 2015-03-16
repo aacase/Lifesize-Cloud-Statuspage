@@ -55,7 +55,8 @@ Template.statuspage.helpers({
 	overallStatus : function(){return Session.get('result')},
 	incidentTable: function(){return Session.get('currentIncidents')},
 	incidentHistoryTable: function(){return Session.get('incidentHistory')},
-	subServicesTable: function(){return Session.get('subServices')}
+	subServicesTable: function(){return Session.get('subServices')},
+	currentIncidentEvents: function(){return Session.get('unresolved')}
 
 });
 
