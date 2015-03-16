@@ -40,7 +40,7 @@
 			</table>
 			{{else}}
 			<div><div class="ui horizontal divider">Cloud Services</div></div>
-			<table class="ui  green inverted celled striped  table">
+			<table class="ui  green inverted celled table">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -49,11 +49,21 @@
 				</thead>
 				<tbody>
 					{{#each subServicesTable}}
-					<tr>
+					{{#if isOperational this}}
+					<tr class="codeGreen">
 						
 						<td>{{name}}</td>
-						<td>{{isOperational status}}</td>
+						<td>{{status}}</td>
 					</tr>
+
+					{{else}}
+					<tr class="codeRed">
+						
+						<td>{{name}}</td>
+						<td>{{status}}</td>
+					</tr>
+
+					{{/if}}
 					{{/each}}
 					
 				</tbody>
