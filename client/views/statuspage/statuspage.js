@@ -38,6 +38,19 @@ Template.statuspage.rendered = function (){
 	  Session.set('incidentHistory', data.incidents);
 	  console.log('incident history data return', Session.get('incidentHistory'));
 
+	  var incidentissues = Session.get('incidentHistory')
+	  var uptimecounter =100
+	  for(var i=0; i<incidentissues.length; i++){
+	  	if (incidentissues[i].impact=='minor'){
+	  		uptimecounter = uptimecounter-0.25;
+	  		console.log(uptimecounter);
+	  	}
+	  	else if (incidentissues[i].impact=='major'){
+	  		uptimecounter = uptimecounter-1.0;
+	  	}
+	  }
+	  Session.set('upTime', uptimecounter)
+
 	});
 
 	//API call for subservices of Lifesize Cloud
@@ -56,9 +69,16 @@ Template.statuspage.helpers({
 	incidentTable: function(){return Session.get('currentIncidents')},
 	incidentHistoryTable: function(){return Session.get('incidentHistory')},
 	subServicesTable: function(){return Session.get('subServices')},
-	currentIncidentEvents: function(){return Session.get('unresolved')}
+	currentIncidentEvents: function(){return Session.get('unresolved')},
+	upTimeStatus: function(){return Session.get('upTime')}
 
 });
+
+
+
+
+
+
 
 
 
