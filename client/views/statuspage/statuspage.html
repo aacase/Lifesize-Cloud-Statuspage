@@ -1,8 +1,8 @@
 <template name="statuspage">
 
 <div class="ui stackable grid">
-	<div class="three column row">
-		<div class="column center aligned">PlaceHolder Text</div>
+	<div class="two column row">
+		
 		<div class="column center aligned"><div class="ui horizontal divider">{{overallStatus}}</div><div class= "circle " id='statusColor'></div></div>
 		<div class="column center aligned" id='incidentTable'>
 			{{#if incidentTable}}
@@ -41,7 +41,27 @@
 				</tfoot>
 			</table>
 			{{else}}
-			<div>A table will be rendered here showing the incidents</div>
+			<div>A table will be rendered here showing the substatus for Lifesize Cloud</div>
+
+			<table class="ui  green inverted celled striped  table">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each subServicesTable}}
+								<tr>
+									
+									<td>{{name}}</td>
+									<td>{{status}}</td>
+								</tr>
+								{{/each}}
+								
+							</tbody>
+							
+			</table>
 			
 			{{/if}}
 		</div>

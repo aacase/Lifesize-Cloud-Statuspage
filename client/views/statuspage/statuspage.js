@@ -28,15 +28,22 @@ Template.statuspage.rendered = function (){
 	  	$('#incidentTable').addClass("codeRed");
 
 	  }
-	  else{
-	  	$('#incidentTable').addClass("codeGreen");
-	  }
+	  // else{
+	  // 	$('#incidentTable').addClass("codeGreen");
+	  // }
 
 	});
-
+	//API call for past incidents
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/incidents.json', function (data) {
 	  Session.set('incidentHistory', data.incidents);
 	  console.log('incident history data return', Session.get('incidentHistory'));
+
+	});
+
+	//API call for subservices of Lifesize Cloud
+	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/components.json', function (data) {
+	  Session.set('subServices', data.components);
+	  console.log('Subservices data return', Session.get('subServices'));
 
 	});
 	
@@ -47,7 +54,8 @@ Template.statuspage.rendered = function (){
 Template.statuspage.helpers({
 	overallStatus : function(){return Session.get('result')},
 	incidentTable: function(){return Session.get('currentIncidents')},
-	incidentHistoryTable: function(){return Session.get('incidentHistory')}
+	incidentHistoryTable: function(){return Session.get('incidentHistory')},
+	subServicesTable: function(){return Session.get('subServices')}
 
 });
 
