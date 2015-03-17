@@ -4,7 +4,7 @@
 Template.statuspage.rendered = function (){
 
 	$('.accordion').accordion();
-	$('.ui.modal').modal('attach events', '.subscribe');
+	$('.ui.modal.firstModal').modal('attach events', '.subscribe');
 	$('.menu .item').tab();
 	
 
@@ -72,12 +72,28 @@ Template.statuspage.rendered = function (){
 		    },
 		    success : function (response) {
 		      console.log(response.email)
-		      $('.ui.modal').modal('hide');
+		      $('.ui.modal.secondModal').modal('show');
 
 		    }
 		  });
 
 	});
+
+	// // SMS Submission
+	// $('.emailCall').click(function(){
+	// 	var sp = new StatusPage.page({ page : '7c66ps9x5g90' });
+	// 	  sp.subscribe({
+	// 	    subscriber : {
+	// 	      email : $('.emailField').val()
+	// 	    },
+	// 	    success : function (response) {
+	// 	      console.log(response.email)
+	// 	      $('.ui.modal').modal('hide');
+
+	// 	    }
+	// 	  });
+
+	// });
 	
 }
 
