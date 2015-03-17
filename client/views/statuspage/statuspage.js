@@ -79,21 +79,21 @@ Template.statuspage.rendered = function (){
 
 	});
 
-	// // SMS Submission
-	// $('.emailCall').click(function(){
-	// 	var sp = new StatusPage.page({ page : '7c66ps9x5g90' });
-	// 	  sp.subscribe({
-	// 	    subscriber : {
-	// 	      email : $('.emailField').val()
-	// 	    },
-	// 	    success : function (response) {
-	// 	      console.log(response.email)
-	// 	      $('.ui.modal').modal('hide');
+	// SMS Submission
+	$('.smsCall').click(function(){
+		var sp = new StatusPage.page({ page : '7c66ps9x5g90' });
+		  sp.subscribe({
+		    subscriber : {
+		      phone_number : $('.smsField').val(),
+		      phone_country : 'us'
+		    },
+		    success : function (response) {
+		      console.log(response.email);
+		      $('.ui.modal.secondModal').modal('show');
+		    }
+		  });
 
-	// 	    }
-	// 	  });
-
-	// });
+	});
 	
 }
 
