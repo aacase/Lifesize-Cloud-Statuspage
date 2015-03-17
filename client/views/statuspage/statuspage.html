@@ -1,5 +1,5 @@
 <template name="statuspage">
-<div class="ui stackable grid">
+<div class="ui stackable grid pushDown">
 
 	<div class="two column row center aligned">
 		<div class="eleven wide column"></div>
@@ -8,41 +8,8 @@
 		
 		<div class="six wide column "><div class="ui horizontal divider">{{overallStatus}}</div> <div class= "circle " id='statusColor'></div></div>
 		<div class="eight wide column " id='incidentTable'>
-			{{#if incidentTable}}
-			<table class="ui  red inverted celled striped table">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Status</th>
-						<th>Notes</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>User 1</td>
-						<td>Data</td>
-						<td>Data</td>
-					</tr>
-					<tr>
-						<td>User 3</td>
-						<td>Data</td>
-						<td>Data</td>
-					</tr>
-					<tr>
-						<td>User 2</td>
-						<td>Denied</td>
-						<td>Data</td>
-					</tr>
-				</tbody>
-				<tfoot>
-				<tr>
-					<th>Footer</th>
-					<th>Footer</th>
-					<th></th>
-				</tr>
-				</tfoot>
-			</table>
-			{{else}}
+			
+			
 			<div><div class="ui horizontal divider">Cloud Services</div></div>
 			<table class="ui  green inverted celled table">
 				<thead>
@@ -72,7 +39,7 @@
 				
 			</table>
 			
-			{{/if}}
+		
 		</div>
 	</div>
 	<div class="row center aligned">
@@ -197,7 +164,7 @@
 							<label><strong>Email</strong></label>
 							<input class="emailField" type="text" placeholder="abc@123.com">
 						</div>
-						<div class="ui submit button emailCall">Submit</div>
+						<div class="ui submit green button emailCall">Submit</div>
 					</form>
 				</div>
 			</div>
@@ -208,7 +175,7 @@
 						<label><strong>Phone Number</strong></label>
 						<input type="text" class='smsField' placeholder="512-555-5555">
 					</div>
-					<div class="ui submit button smsCall">Submit</div>
+					<div class="ui submit green button smsCall">Submit</div>
 				</div>
 			</div>
 			<div class="ui bottom attached tab segment" data-tab="third">

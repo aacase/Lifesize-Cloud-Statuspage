@@ -123,8 +123,3 @@ Template.statuspage.helpers({
 
 
 
-
-
-
-
-
