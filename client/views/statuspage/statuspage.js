@@ -4,6 +4,7 @@
 Template.statuspage.rendered = function (){
 
 	$('.accordion').accordion();
+	$('.subscribe .button').popup();
 
 	//Main status. This will return the overall health of Cloud
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/status.json', function (data) {
