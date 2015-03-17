@@ -4,7 +4,10 @@
 Template.statuspage.rendered = function (){
 
 	$('.accordion').accordion();
-	$('.subscribe .button').popup();
+	$('.ui.modal').modal('attach events', '.subscribe');
+	$('.menu .item').tab();
+	
+
 
 	//Main status. This will return the overall health of Cloud
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/status.json', function (data) {
@@ -58,6 +61,21 @@ Template.statuspage.rendered = function (){
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/components.json', function (data) {
 	  Session.set('subServices', data.components);
 	  console.log('Subservices data return', Session.get('subServices'));
+
+	});
+	// Email Submission
+	$('.emailCall').click(function(){
+		var sp = new StatusPage.page({ page : '7c66ps9x5g90' });
+		  sp.subscribe({
+		    subscriber : {
+		      email : $('.emailField').val()
+		    },
+		    success : function (response) {
+		      console.log(response.email)
+		      $('.ui.modal').modal('hide');
+
+		    }
+		  });
 
 	});
 	
