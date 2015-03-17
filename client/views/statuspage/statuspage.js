@@ -63,6 +63,14 @@ Template.statuspage.rendered = function (){
 	  console.log('Subservices data return', Session.get('subServices'));
 
 	});
+
+	//API call for Scheduled Maintenance
+
+	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/scheduled-maintenances.json', function (data) {
+	  Session.set('schedMaint', data.scheduled_maintenances);
+	  console.log('Scheduled Maintenance data return', Session.get('schedMaint'));
+
+	});
 	// Email Submission
 	$('.emailCall').click(function(){
 		var sp = new StatusPage.page({ page : '7c66ps9x5g90' });
@@ -105,7 +113,8 @@ Template.statuspage.helpers({
 	incidentHistoryTable: function(){return Session.get('incidentHistory')},
 	subServicesTable: function(){return Session.get('subServices')},
 	currentIncidentEvents: function(){return Session.get('unresolved')},
-	upTimeStatus: function(){return Session.get('upTime')}
+	upTimeStatus: function(){return Session.get('upTime')},
+	ScheduledMaintenanceEvents: function(){return Session.get('schedMaint')}
 
 });
 

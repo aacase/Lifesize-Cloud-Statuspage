@@ -106,9 +106,10 @@
 			{{/if}}
 		</div>
 	</div>
-	<div class="one column row">
+	<div class="one column stackable row">
 		<div class="one wide column"></div>
-		<div class="fourteen wide column ">
+		<div class="one wide column"></div>
+		<div class="six wide column ">
 			<div class="ui accordion">
 				<div class="ui header title">
 					<i class="dropdown icon"></i>
@@ -126,6 +127,40 @@
 						</thead>
 						<tbody>
 							{{#each incidentHistoryTable}}
+							<tr>
+								<td><a href="{{shortlink}}">{{name}}</a></td>
+								<td>{{impact}}</td>
+								<td>{{status}}</td>
+								<td>{{resolved_at}}</td>
+							</tr>
+							{{/each}}
+							
+						</tbody>
+						
+					</table>
+				</div>
+				
+			</div>
+		</div>
+		<div class="one wide column"></div>
+		<div class="six wide column ">
+			<div class="ui accordion">
+				<div class="ui header title">
+					<i class="dropdown icon"></i>
+					Previous Maintenance
+				</div>
+				<div class="content">
+					<table class="ui purple inverted celled striped  table">
+						<thead>
+							<tr>
+								<th>Event</th>
+								<th>Impact</th>
+								<th>Status</th>
+								<th>Resolved at</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each ScheduledMaintenanceEvents}}
 							<tr>
 								<td><a href="{{shortlink}}">{{name}}</a></td>
 								<td>{{impact}}</td>
