@@ -5,7 +5,7 @@
 		<div class="six wide column "><div class="ui horizontal divider">{{overallStatus}}</div><div class= "circle " id='statusColor'></div></div>
 		<div class="eight wide column " id='incidentTable'>
 			{{#if incidentTable}}
-			<table class="ui  red inverted celled striped table">
+			<!-- <table class="ui  red inverted celled striped table">
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -37,14 +37,14 @@
 					<th></th>
 				</tr>
 				</tfoot>
-			</table>
+			</table> -->
 			{{else}}
-			<div><div class="ui horizontal divider">Cloud Services</div></div>
+			<div><div class="ui horizontal divider">{{constant 'cloudservices'}}</div></div>
 			<table class="ui  green inverted celled table">
 				<thead>
 					<tr>
-						<th>Name</th>
-						<th>Status</th>
+						<th>{{constant 'tablename'}}</th>
+						<th>{{constant 'tablestatus'}}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -82,7 +82,7 @@
 					<tr>
 						<th>Incident</th>
 						<th>Impact</th>
-						<th>Status</th>
+						<th>{{constant 'tablestatus'}}</th>
 						<th>Updated At</th>
 					</tr>
 				</thead>
@@ -100,7 +100,7 @@
 				
 			</table>
 			{{else}}
-			<h1> During all recently reported incidents, Lifesize Cloud has maintained {{upTimeStatus}}% Performance</h1>
+			<h1> {{constant 'uptimemessage'}} {{upTimeStatus}}% {{constant 'performance'}}</h1>
 			{{/if}}
 		</div>
 	</div>
