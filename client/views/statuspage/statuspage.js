@@ -1,11 +1,28 @@
 
 
 
+
+
+
 Template.statuspage.rendered = function (){
+var eventarray=[]	
+incidentCalendar.find().forEach(function(obj){
+    eventarray.push({title: obj.title, start: obj.createdAt})
+})
+	 	
+		
+
 
 	$('.accordion').accordion();
 	$('.ui.modal.firstModal').modal('attach events', '.subscribe');
 	$('.menu .item').tab();
+	$('.ui.modal.calendarModal').modal('attach events', '.calClick ');
+	$('#calendar').fullCalendar({
+			defaultDate: '2015-02-12',
+			editable: false,
+			eventLimit: true, // allow "more" link when too many events
+			events: eventarray
+		});
 	
 
 
@@ -43,7 +60,13 @@ Template.statuspage.rendered = function (){
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/incidents.json', function (data) {
 	  Session.set('incidentHistory', data.incidents);
 	  console.log('incident history data return', Session.get('incidentHistory'));
+	  //insert new incidents into mongo
+	  for (i=0; i< Session.get('incidentHistory').length; i++){
+	  	if (!incidentCalendar.findOne({ _id:Session.get('incidentHistory')[i].id  })){
+	  		incidentCalendar.insert({ _id: Session.get('incidentHistory')[i].id, title : Session.get('incidentHistory')[i].name, content:Session.get('incidentHistory')[i].shortlink, createdAt: Session.get('incidentHistory')[i].updated_at});
 
+	  	}
+	  }
 	  var incidentissues = Session.get('incidentHistory')
 	  var uptimecounter =100
 	  for(var i=0; i<incidentissues.length; i++){
@@ -75,6 +98,8 @@ Template.statuspage.rendered = function (){
 	  if (Session.get('activeMaint').length > 0){
 	  	Session.set('currentMaint', true);
 	  }
+
+
 	});
 
 	//API call for completed Scheduled Maintenance
@@ -82,6 +107,11 @@ Template.statuspage.rendered = function (){
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/scheduled-maintenances.json', function (data) {
 	  Session.set('schedMaint', data.scheduled_maintenances);
 	  console.log('Scheduled Maintenance data return', Session.get('schedMaint'));
+	  for (i=0; i< Session.get('schedMaint').length; i++){
+	  	if (!calendar.findOne({ _id:Session.get('schedMaint')[i].id  })){
+	  		calendar.insert({ _id: Session.get('schedMaint')[i].id, title : Session.get('schedMaint')[i].name, content:Session.get('schedMaint')[i].shortlink, createdAt: Session.get('schedMaint')[i].updated_at});
+	  	}
+	  }
 
 	});
 	// Email Submission
@@ -115,7 +145,8 @@ Template.statuspage.rendered = function (){
 		  });
 
 	});
-	
+
+	// populated calendar
 }
 
 
