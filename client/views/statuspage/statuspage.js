@@ -19,17 +19,17 @@ Template.statuspage.rendered = function (){
 	   	$('#statusColor').addClass("codeRed");
 	});
 
-	//incidents. This will return an array of incients. Perhaps the best way is to dynmically render and indicent if it's in progress.
+	//API call for active incidents. This will return an array of incients. Perhaps the best way is to dynmically render and indicent if it's in progress.
 
 	
 
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/incidents/unresolved.json', function (data) {
 	  Session.set('unresolved', data.incidents);
-	  console.log('unresolved data return', Session.get('unresolved'));
+	  console.log('Current Incidents data return', Session.get('unresolved'));
 
 	  if (Session.get('unresolved').length > 0){
 	  	Session.set('currentIncidents', true);
-	  	$('#incidentTable').addClass("codeRed");
+	  	// $('#incidentTable').addClass("codeRed");
 
 	  }
 	  // else{
@@ -37,6 +37,8 @@ Template.statuspage.rendered = function (){
 	  // }
 
 	});
+
+
 	//API call for past incidents
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/incidents.json', function (data) {
 	  Session.set('incidentHistory', data.incidents);
@@ -64,7 +66,18 @@ Template.statuspage.rendered = function (){
 
 	});
 
-	//API call for Scheduled Maintenance
+
+	//API call for Active Scheduled Maintenance 
+	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/scheduled-maintenances/active.json', function (data) {
+	  Session.set('activeMaint', data.scheduled_maintenances);
+	  console.log('Current Active Maintenance data return', Session.get('activeMaint'));
+
+	  if (Session.get('activeMaint').length > 0){
+	  	Session.set('currentMaint', true);
+	  }
+	});
+
+	//API call for completed Scheduled Maintenance
 
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/scheduled-maintenances.json', function (data) {
 	  Session.set('schedMaint', data.scheduled_maintenances);
@@ -110,9 +123,11 @@ Template.statuspage.rendered = function (){
 Template.statuspage.helpers({
 	overallStatus : function(){return Session.get('result')},
 	incidentTable: function(){return Session.get('currentIncidents')},
+	maintTable: function(){return Session.get('currentMaint')},
 	incidentHistoryTable: function(){return Session.get('incidentHistory')},
 	subServicesTable: function(){return Session.get('subServices')},
 	currentIncidentEvents: function(){return Session.get('unresolved')},
+	currentMaintEvents: function(){return Session.get('activeMaint')},
 	upTimeStatus: function(){return Session.get('upTime')},
 	ScheduledMaintenanceEvents: function(){return Session.get('schedMaint')}
 
