@@ -1,12 +1,28 @@
 
 
 
+
+
+
 Template.statuspage.rendered = function (){
-	// calendar.insert({ _id: "Testid", title : "test calendar entry", content:"03-18-2015", createdAt: new Date()});
+var eventarray=[]	
+incidentCalendar.find().forEach(function(obj){
+    eventarray.push({title: obj.title, start: obj.createdAt})
+})
+	 	
+		
+
 
 	$('.accordion').accordion();
 	$('.ui.modal.firstModal').modal('attach events', '.subscribe');
 	$('.menu .item').tab();
+	$('.ui.modal.calendarModal').modal('attach events', '.calClick ');
+	$('#calendar').fullCalendar({
+			defaultDate: '2015-02-12',
+			editable: false,
+			eventLimit: true, // allow "more" link when too many events
+			events: eventarray
+		});
 	
 
 
@@ -48,6 +64,7 @@ Template.statuspage.rendered = function (){
 	  for (i=0; i< Session.get('incidentHistory').length; i++){
 	  	if (!incidentCalendar.findOne({ _id:Session.get('incidentHistory')[i].id  })){
 	  		incidentCalendar.insert({ _id: Session.get('incidentHistory')[i].id, title : Session.get('incidentHistory')[i].name, content:Session.get('incidentHistory')[i].shortlink, createdAt: Session.get('incidentHistory')[i].updated_at});
+
 	  	}
 	  }
 	  var incidentissues = Session.get('incidentHistory')
@@ -128,7 +145,8 @@ Template.statuspage.rendered = function (){
 		  });
 
 	});
-	
+
+	// populated calendar
 }
 
 
