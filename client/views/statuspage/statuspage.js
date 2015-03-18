@@ -44,7 +44,12 @@ Template.statuspage.rendered = function (){
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/incidents.json', function (data) {
 	  Session.set('incidentHistory', data.incidents);
 	  console.log('incident history data return', Session.get('incidentHistory'));
-
+	  //insert new incidents into mongo
+	  for (i=0; i< Session.get('incidentHistory').length; i++){
+	  	if (!incidentCalendar.findOne({ _id:Session.get('incidentHistory')[i].id  })){
+	  		incidentCalendar.insert({ _id: Session.get('incidentHistory')[i].id, title : Session.get('incidentHistory')[i].name, content:Session.get('incidentHistory')[i].shortlink, createdAt: Session.get('incidentHistory')[i].updated_at});
+	  	}
+	  }
 	  var incidentissues = Session.get('incidentHistory')
 	  var uptimecounter =100
 	  for(var i=0; i<incidentissues.length; i++){
