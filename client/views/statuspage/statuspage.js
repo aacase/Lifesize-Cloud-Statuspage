@@ -2,7 +2,7 @@
 
 
 Template.statuspage.rendered = function (){
-	// calendar.insert({ title : "test calendar entry", content:"03-18-2015", createdAt: new Date()});
+	// calendar.insert({ _id: "Testid", title : "test calendar entry", content:"03-18-2015", createdAt: new Date()});
 
 	$('.accordion').accordion();
 	$('.ui.modal.firstModal').modal('attach events', '.subscribe');
@@ -76,6 +76,8 @@ Template.statuspage.rendered = function (){
 	  if (Session.get('activeMaint').length > 0){
 	  	Session.set('currentMaint', true);
 	  }
+
+
 	});
 
 	//API call for completed Scheduled Maintenance
@@ -83,6 +85,11 @@ Template.statuspage.rendered = function (){
 	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/scheduled-maintenances.json', function (data) {
 	  Session.set('schedMaint', data.scheduled_maintenances);
 	  console.log('Scheduled Maintenance data return', Session.get('schedMaint'));
+	  for (i=0; i< Session.get('schedMaint').length; i++){
+	  	if (!calendar.findOne({ _id:Session.get('schedMaint')[i].id  })){
+	  		calendar.insert({ _id: Session.get('schedMaint')[i].id, title : Session.get('schedMaint')[i].name, content:Session.get('schedMaint')[i].shortlink, createdAt: Session.get('schedMaint')[i].updated_at});
+	  	}
+	  }
 
 	});
 	// Email Submission
