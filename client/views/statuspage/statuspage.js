@@ -2,6 +2,7 @@
 
 
 Template.statuspage.rendered = function (){
+	// calendar.insert({ title : "test calendar entry", content:"03-18-2015", createdAt: new Date()});
 
 	$('.accordion').accordion();
 	$('.ui.modal.firstModal').modal('attach events', '.subscribe');

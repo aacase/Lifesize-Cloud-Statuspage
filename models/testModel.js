@@ -1,6 +1,6 @@
-calendar = new Mongo.Collection('calendar');
+testModel = new Mongo.Collection('testModel');
 
-calendar.attachSchema(
+testModel.attachSchema(
     new SimpleSchema({
     title: {
       type: String
@@ -18,7 +18,7 @@ calendar.attachSchema(
 // Collection2 already does schema checking
 // Add custom permission rules if needed
 if (Meteor.isServer) {
-  calendar.allow({
+  testModel.allow({
     insert : function () {
       return true;
     },
