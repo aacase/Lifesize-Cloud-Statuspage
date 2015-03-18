@@ -11,6 +11,7 @@
 			
 			
 			<div><div class="ui horizontal divider">Cloud Services</div></div>
+
 			<table class="ui  green inverted celled table">
 				<thead>
 					<tr>
@@ -45,6 +46,74 @@
 	<div class="row center aligned">
 		<div class="fourteen wide column">
 			{{#if incidentTable}}
+			<div class="ui error form segment">
+				<div class="ui error message">
+					<div class="header">The Following Incident is Currently Being Reported on Lifesize Cloud</div>
+					
+					<table class="ui celled striped  table">
+						<thead>
+							<tr>
+								<th>Incident</th>
+								<th>Impact</th>
+								<th>Status</th>
+								<th>Updated At</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each currentIncidentEvents}}
+							<tr>
+								<td><a href="{{shortlink}}">{{name}}</a></td>
+								<td>{{impact}}</td>
+								<td>{{status}}</td>
+								<td>{{updated_at}}</td>
+							</tr>
+							{{/each}}
+							
+						</tbody>
+						
+					</table>
+				</div>
+			</div>
+			{{/if}}
+		</div>
+	</div>
+	<div class="row center aligned">
+		<div class="fourteen wide column">
+			{{#if maintTable}}
+			<div class="ui warning form segment">
+				<div class="ui warning message">
+					<div class="header">The Following Scheduled Maintenance is Currently Taking Place on Lifesize Cloud</div>
+					
+					<table class="ui celled striped  table">
+						<thead>
+							<tr>
+								<th>Incident</th>
+								<th>Impact</th>
+								<th>Status</th>
+								<th>Updated At</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each currentMaintEvents}}
+							<tr>
+								<td><a href="{{shortlink}}">{{name}}</a></td>
+								<td>{{impact}}</td>
+								<td>{{status}}</td>
+								<td>{{updated_at}}</td>
+							</tr>
+							{{/each}}
+							
+						</tbody>
+						
+					</table>
+				</div>
+			</div>
+			{{/if}}
+		</div>
+	</div>
+	<!-- <div class="row center aligned">
+		<div class="fourteen wide column">
+			{{#if incidentTable}}
 			<h1>Current Incident:</h1>
 			<table class="ui purple inverted celled striped  table">
 				<thead>
@@ -72,7 +141,7 @@
 			<h1> During all recently reported incidents, Lifesize Cloud has maintained {{upTimeStatus}}% Performance</h1>
 			{{/if}}
 		</div>
-	</div>
+	</div> -->
 	<div class="one column stackable row">
 		<div class="one wide column"></div>
 		<div class="one wide column"></div>
