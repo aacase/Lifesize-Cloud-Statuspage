@@ -182,9 +182,19 @@ Template.statuspage.events=({
     console.log('ballsack');
     	var eventarray=[]	
     incidentCalendar.find().forEach(function(obj){
-        eventarray.push({title: obj.title, start: obj.createdAt})
+        eventarray.push({title: obj.title, start: obj.createdAt, content: obj.content})
     })
     	$('#calendar').fullCalendar({
+    		eventClick: function(calEvent, jsEvent, view) {
+
+        // alert('Hell yeah ' + calEvent.content);
+        window.location.href=calEvent.content;
+        
+
+        // change the border color just for fun
+        $(this).css('border-color', 'red');
+
+    },
 			defaultDate: new Date(),
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
