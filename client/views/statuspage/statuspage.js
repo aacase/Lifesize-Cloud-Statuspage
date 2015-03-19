@@ -185,7 +185,7 @@ Template.statuspage.events=({
         eventarray.push({title: obj.title, start: obj.createdAt})
     })
     	$('#calendar').fullCalendar({
-			defaultDate: '2015-02-12',
+			defaultDate: new Date(),
 			editable: false,
 			eventLimit: true, // allow "more" link when too many events
 			events: eventarray
