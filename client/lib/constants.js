@@ -17,10 +17,11 @@ Meteor.App = {
   NAME: 'LifeSize Cloud Status',
   DESCRIPTION: 'Are we Up? Probably',
   UPTIMEMESSAGE:'During all recently reported incidents, Lifesize Cloud has maintained',
-  PERFORMANCE: 'Performance',
+  PERFORMANCE: 'or better Performance',
   CLOUDSERVICES: 'Cloud Services',
   TABLENAME: 'Name',
-  TABLESTATUS: 'Status'
+  TABLESTATUS: 'Status',
+
 
 
 };

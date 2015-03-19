@@ -5,10 +5,10 @@
 
 
 Template.statuspage.rendered = function (){
-var eventarray=[]	
-incidentCalendar.find().forEach(function(obj){
-    eventarray.push({title: obj.title, start: obj.createdAt})
-})
+// var eventarray=[]	
+// incidentCalendar.find().forEach(function(obj){
+//     eventarray.push({title: obj.title, start: obj.createdAt})
+// })
 	 	
 		
 
@@ -17,12 +17,13 @@ incidentCalendar.find().forEach(function(obj){
 	$('.ui.modal.firstModal').modal('attach events', '.subscribe');
 	$('.menu .item').tab();
 	$('.ui.modal.calendarModal').modal('attach events', '.calClick ');
-	$('#calendar').fullCalendar({
-			defaultDate: '2015-02-12',
-			editable: false,
-			eventLimit: true, // allow "more" link when too many events
-			events: eventarray
-		});
+
+	// $('#calendar').fullCalendar({
+	// 		defaultDate: '2015-02-12',
+	// 		editable: false,
+	// 		eventLimit: true, // allow "more" link when too many events
+	// 		events: eventarray
+	// 	});
 	
 
 
@@ -164,8 +165,34 @@ Template.statuspage.helpers({
 
 });
 
+// 	$('#calendar').fullCalendar({
+// // 			defaultDate: '2015-02-12',
+// // 			editable: false,
+// // 			eventLimit: true, // allow "more" link when too many events
+// // 			events: eventarray
+// // 		});	
 
 
+Template.statuspage.events=({
+	// $('.calClick').click(function () {
+	// 	alert('holy shit!')
+	// 	// body...
+	// })
+	'click .calClick': function(){
+    console.log('ballsack');
+    	var eventarray=[]	
+    incidentCalendar.find().forEach(function(obj){
+        eventarray.push({title: obj.title, start: obj.createdAt})
+    })
+    	$('#calendar').fullCalendar({
+			defaultDate: '2015-02-12',
+			editable: false,
+			eventLimit: true, // allow "more" link when too many events
+			events: eventarray
+		});	
+
+}
+});
 
 
 
