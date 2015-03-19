@@ -1,17 +1,14 @@
 <template name="statuspage">
 <div class="ui stackable grid pushDown">
-
 	<div class="two column row center aligned">
 		<div class="eleven wide column"></div>
 		<div class="three wide column"><div class="ui button purple subscribe">Subscribe to Updates</div></div>
-
-		
+		<!-- begin status circle -->
 		<div class="six wide column "><div class="ui horizontal divider">{{overallStatus}}</div> <div class= "circle " id='statusColor'></div></div>
+		<!-- end status circle -->
 		<div class="eight wide column " id='incidentTable'>
-			
-			
 			<div><div class="ui horizontal divider">Cloud Services</div></div>
-
+			<!-- begin cloud services table -->
 			<table class="ui  green inverted celled table">
 				<thead>
 					<tr>
@@ -39,12 +36,12 @@
 				</tbody>
 				
 			</table>
-			
-		
+			<!-- end cloud services table -->		
 		</div>
 	</div>
 	<div class="row center aligned">
 		<div class="fourteen wide column">
+		<!-- begin incident flash messages -->
 			{{#if incidentTable}}
 			<div class="ui error form segment">
 				<div class="ui error message">
@@ -75,9 +72,11 @@
 				</div>
 			</div>
 			{{/if}}
+		<!-- end incident flash messages -->
 		</div>
 	</div>
 	<div class="row center aligned">
+		<!-- begin maintenance flash message -->
 		<div class="fourteen wide column">
 			{{#if maintTable}}
 			<div class="ui warning form segment">
@@ -110,42 +109,13 @@
 			</div>
 			{{/if}}
 		</div>
+		<!-- end maintenance flash message -->
 	</div>
-	<!-- <div class="row center aligned">
-		<div class="fourteen wide column">
-			{{#if incidentTable}}
-			<h1>Current Incident:</h1>
-			<table class="ui purple inverted celled striped  table">
-				<thead>
-					<tr>
-						<th>Incident</th>
-						<th>Impact</th>
-						<th>Status</th>
-						<th>Updated At</th>
-					</tr>
-				</thead>
-				<tbody>
-					{{#each currentIncidentEvents}}
-					<tr>
-						<td><a href="{{shortlink}}">{{name}}</a></td>
-						<td>{{impact}}</td>
-						<td>{{status}}</td>
-						<td>{{updated_at}}</td>
-					</tr>
-					{{/each}}
-					
-				</tbody>
-				
-			</table>
-			{{else}}
-			<h1> During all recently reported incidents, Lifesize Cloud has maintained {{upTimeStatus}}% Performance</h1>
-			{{/if}}
-		</div>
-	</div> -->
 	<div class="one column stackable row">
 		<div class="one wide column"></div>
 		<div class="one wide column"></div>
 		<div class="six wide column ">
+			<!-- begin incident table -->
 			<div class="ui accordion">
 				<div class="ui header title">
 					<i class="dropdown icon"></i>
@@ -178,7 +148,9 @@
 				</div>
 				
 			</div>
+			<!-- end incident table -->
 		</div>
+		<!-- begin maintenance table -->
 		<div class="one wide column"></div>
 		<div class="six wide column ">
 			<div class="ui accordion">
@@ -214,7 +186,9 @@
 				
 			</div>
 		</div>
+		<!-- end maintenance table -->
 	</div>
+	<!-- begin subscribe modal -->
 	<div class="ui modal firstModal">
 		<i class="close icon"></i>
 		<div class="header">
@@ -254,23 +228,19 @@
 				
 			</div>
 		</div>
-		
 	</div>
+	<!-- end subscribe modal -->
+	<!-- begin success modal -->
 	<div class="ui modal secondModal">
 		<i class="close icon"></i>
-		<div class="content">Thanks for Subscribing to updates. You're all set!</div>
-		
-		
-		
+		<div class="content">Thanks for Subscribing to updates. You're all set!</div>	
 	</div>
-
+	<!-- end success modal -->
+	<!-- Begin calendar modal -->
 	<div class="ui long modal calendarModal">
-		<!-- <div id='calendar'></div> -->
-		{{> calendar}}
-		
-		
-		
+		<!-- Render the Calendar -->
+		{{> calendar}}	
 	</div>
-	
+	<!-- end calendar modal -->
 </div>
 </template>
