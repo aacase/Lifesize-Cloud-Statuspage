@@ -180,10 +180,16 @@ Template.statuspage.events=({
 	// })
 	'click .calClick': function(){
     console.log('ballsack');
-    	var eventarray=[]	
+    	var eventarray=[]
+    	var maintArray=[]	
     incidentCalendar.find().forEach(function(obj){
         eventarray.push({title: obj.title, start: obj.createdAt, content: obj.content})
     })
+    calendar.find().forEach(function(obj){
+        maintArray.push({title: obj.title, start: obj.createdAt, content: obj.content, color:"green"})
+    })
+    console.log(maintArray)
+    eventarray=eventarray.concat(maintArray);
     	$('#calendar').fullCalendar({
     		eventClick: function(calEvent, jsEvent, view) {
 
@@ -192,7 +198,7 @@ Template.statuspage.events=({
         
 
         // change the border color just for fun
-        $(this).css('border-color', 'red');
+        // $(this).css('border-color', 'red');
 
     },
 			defaultDate: new Date(),
