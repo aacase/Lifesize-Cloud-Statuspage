@@ -33,8 +33,12 @@ Template.statuspage.rendered = function (){
 	   if (Session.get('result')=="All Systems Operational"){
 	   	$('#statusColor').addClass("codeGreen");
 	   }
-	   else if (Session.get('result')=="Partial System Outage")
+	   else if (Session.get('result')=="Partial System Outage"){
 	   	$('#statusColor').addClass("codeRed");
+	   }
+	     else if (Session.get('result')=="Partially Degraded Service"){
+	   	$('#statusColor').addClass("codeRed");
+	   }
 	});
 
 	//API call for active incidents. This will return an array of incients. Perhaps the best way is to dynmically render and indicent if it's in progress.
@@ -179,7 +183,6 @@ Template.statuspage.events=({
 	// 	// body...
 	// })
 	'click .calClick': function(){
-    console.log('ballsack');
     	var eventarray=[]
     	var maintArray=[]	
     incidentCalendar.find().forEach(function(obj){
