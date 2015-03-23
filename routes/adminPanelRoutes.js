@@ -1,7 +1,7 @@
 var myAdminHookFunction=function(){
 	if ( !Meteor.user()) {
     // if the user is not logged in, render the Login template
-    this.render('statuspage');
+     Router.go('/');
   } 
   	else if (Meteor.user().roles[0]=='admin'){
   		this.next();
