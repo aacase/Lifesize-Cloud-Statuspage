@@ -72,6 +72,39 @@
 				</div>
 			</div>
 			{{/if}}
+
+			<!-- the following table is for when we phase out statuspage completely -->
+
+			{{#if newCurrentIncidents}}
+			<div class="ui error form segment">
+				<div class="ui error message">
+					<div class="header">The Following Incident is Currently Being Reported on Lifesize Cloud</div>
+					
+					<table class="ui celled striped  table">
+						<thead>
+							<tr>
+								<th>Incident</th>
+								<th>Impact</th>
+								<th>Status</th>
+								<th>Updated At</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each customCurrentIncidentEvents}}
+							<tr>
+								<td><a href="{{shortlink}}">{{title}}</a></td>
+								<td>{{impact}}</td>
+								<td>{{content}}</td>
+								<td>{{updated_at}}</td>
+							</tr>
+							{{/each}}
+							
+						</tbody>
+						
+					</table>
+				</div>
+			</div>
+			{{/if}}
 		<!-- end incident flash messages -->
 		</div>
 	</div>

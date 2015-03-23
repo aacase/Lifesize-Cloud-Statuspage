@@ -10,7 +10,19 @@ Template.statuspage.rendered = function (){
 //     eventarray.push({title: obj.title, start: obj.createdAt})
 // })
 	 	
-		
+		unresolvedArray=[]
+		var item;
+		var items = incidentCalendar.find();
+		items.forEach(function(item) {
+  		if (item.resolved==false ){
+  			console.log('kitty!')
+  			Session.set('newCurrentIncidents', true);
+  			unresolvedArray.push(item);
+  			console.log(unresolvedArray)
+
+  		}
+  		Session.set("lifesizeUnresolved",unresolvedArray)
+		});
 
 
 	$('.accordion').accordion();
@@ -159,10 +171,12 @@ Template.statuspage.rendered = function (){
 Template.statuspage.helpers({
 	overallStatus : function(){return Session.get('result')},
 	incidentTable: function(){return Session.get('currentIncidents')},
+	newCurrentIncidents: function(){return Session.get('newCurrentIncidents')},
 	maintTable: function(){return Session.get('currentMaint')},
 	incidentHistoryTable: function(){return Session.get('incidentHistory')},
 	subServicesTable: function(){return Session.get('subServices')},
 	currentIncidentEvents: function(){return Session.get('unresolved')},
+	customCurrentIncidentEvents: function(){return Session.get('lifesizeUnresolved')},
 	currentMaintEvents: function(){return Session.get('activeMaint')},
 	upTimeStatus: function(){return Session.get('upTime')},
 	ScheduledMaintenanceEvents: function(){return Session.get('schedMaint')}

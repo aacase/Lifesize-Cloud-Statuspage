@@ -11,6 +11,9 @@ incidentCalendar.attachSchema(
     createdAt: {
       type: Date,
       denyUpdate: true
+    },
+    resolved:{
+      type: Boolean
     }
   })
 );
