@@ -6,6 +6,9 @@ var myAdminHookFunction=function(){
   	else if (Meteor.user().roles[0]=='admin'){
   		this.next();
   }
+  else if (!Meteor.user().roles[0]=='admin'){
+  		Router.go('/');
+  }
 
   // else  {
   //   // otherwise don't hold up the rest of hooks or our route/action function

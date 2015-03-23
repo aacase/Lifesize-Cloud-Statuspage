@@ -1,3 +1,64 @@
 <template name="createIncident">
-    <p>You're the hero that gotham needs</p>
+    <!-- <p>You're the hero that gotham needs</p> -->
+	<div class="ui stackable grid">
+    <div class="row ">
+    	<div class="one wide column"></div>
+    	<div class="fourteen wide column ">
+    		<form class="ui form">
+    		  <h2 class="ui dividing header">Create Incident</h2>
+    		  <div class="one field">
+    		    <div class="field">
+    		      <label>Incident Name</label>
+    		      
+    		        <div class="field">
+    		          <input type="text" name="incident-name" placeholder="Ahhh the severs are on fire!">
+    		        </div>
+    		        
+    		      
+    		    </div>
+    		    
+    		  </div>
+    		  <label for="incident">Incident Status</label>
+    		  <div class="inline fields">
+    		      
+    		      <div class="field">
+    		        <div class="ui radio checkbox">
+    		          <input type="radio" name="incident" checked="">
+    		          <label>Investigating</label>
+    		        </div>
+    		      </div>
+    		      <div class="field">
+    		        <div class="ui radio checkbox">
+    		          <input type="radio" name="incident">
+    		          <label>Identified</label>
+    		        </div>
+    		      </div>
+    		      <div class="field">
+    		        <div class="ui radio checkbox">
+    		          <input type="radio" name="incident">
+    		          <label>Monitoring</label>
+    		        </div>
+    		      </div>
+    		      <div class="field">
+    		        <div class="ui radio checkbox">
+    		          <input type="radio" name="incident">
+    		          <label>Resolved</label>
+    		        </div>
+    		      </div>
+    		    </div>
+    		 
+    		  <div class="field">
+    		    <label>Incident Details</label>
+    		    <textarea></textarea>
+    		  </div>
+    		 
+    		  <div class="ui error message">
+    		    <div class="header">We noticed some issues</div>
+    		  </div>
+    		  <div class="ui  blue submit button">Create Incident</div>
+    		</form>
+    	</div>
+    	<div class="one wide column"></div>
+    </div>
+</div>
 </template>
