@@ -24,7 +24,9 @@ Template.statuspage.rendered = function (){
   		Session.set("lifesizeUnresolved",unresolvedArray)
 		});
 
-
+	$('.context.example .ui.sidebar').sidebar({
+	    context: $('.context.example .bottom.segment')
+	  }).sidebar('attach events', '.context.example .menu .item');
 	$('.accordion').accordion();
 	$('.ui.modal.firstModal').modal('attach events', '.subscribe');
 	$('.menu .item').tab();
@@ -200,7 +202,7 @@ Template.statuspage.events=({
     	var eventarray=[]
     	var maintArray=[]	
     incidentCalendar.find().forEach(function(obj){
-        eventarray.push({title: obj.title, start: obj.createdAt, content: obj.content})
+        eventarray.push({realid: obj._id, title: obj.title, start: obj.createdAt, content: obj.content})
     })
     calendar.find().forEach(function(obj){
         maintArray.push({title: obj.title, start: obj.createdAt, content: obj.content, color:"green"})
@@ -211,7 +213,7 @@ Template.statuspage.events=({
     		eventClick: function(calEvent, jsEvent, view) {
 
         // alert('Hell yeah ' + calEvent.content);
-        window.location.href=calEvent.content;
+        window.location.href="/incident/"+calEvent.realid;
         
 
         // change the border color just for fun

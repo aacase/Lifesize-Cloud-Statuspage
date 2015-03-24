@@ -1,4 +1,7 @@
 <template name="statuspage">
+	{{#if currentUser}}
+	{{> menu}}
+	{{/if}}
 <div class="ui stackable grid pushDown">
 	<div class="two column row center aligned">
 		<div class="eleven wide column"></div>
