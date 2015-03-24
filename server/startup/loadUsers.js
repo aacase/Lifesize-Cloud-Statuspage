@@ -15,7 +15,7 @@ Meteor.startup(function () {
   for (key in users) if (users.hasOwnProperty(key)) {
     loadUser(users[key]);
   }
-  Roles.addUsersToRoles("CEvvK6fcwG9qSWvNr", ['admin'])
+  Roles.addUsersToRoles("HzwhtRG9MTfEzsRY4", ['admin'])
 });
 
 // Accounts.validateNewUser(function (user) {
