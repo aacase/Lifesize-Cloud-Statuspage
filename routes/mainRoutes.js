@@ -16,3 +16,13 @@ Router.route('/', {
     SEO.set({ title: 'Status Page ' + Meteor.App.NAME });
   }
 });
+
+Router.map(function() {
+    this.route('oneIncident', { 
+        path: '/incident/:_id',
+        template: 'singleIncident', // <-- to be explicit
+        data: function() {
+            return incidentCalendar.findOne(this.params._id);
+        }
+    });
+});

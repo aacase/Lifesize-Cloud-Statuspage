@@ -4,5 +4,5 @@ AccountsTemplates.configure({
 
 AccountsTemplates.configureRoute('signIn', {
     name: 'signin',
-    redirect: '/createIncident'
+    redirect: '/admin'
 });

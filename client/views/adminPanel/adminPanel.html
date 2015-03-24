@@ -1,8 +1,10 @@
 <template name="adminPanel">
     <h1>Cloud Status Admin Panel</h1>
-
-    <a href="/createIncident">Report an Incident / Update an Existing Incident</a>
-   <!--  {{#if showLogin}} -->
+    {{#if currentUser}}
+    <a href="/createIncident">Report an Incident / Update an Existing Incident</a> <br>
+    <a href="/createMaint">Schedule Maintenance / Update Existing Scheduled Maintenance</a>
+    
+    {{/if}}
     <div class="login-wrapper {{animateClass}} animated">
         {{#if currentUser}}
         <div class="actions-wrapper">
@@ -18,5 +20,6 @@
         {{> atForm }}
         {{/if}}
     </div>
-    <!-- {{/if}} -->
+    
+  
 </template>
