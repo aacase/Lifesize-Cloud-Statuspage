@@ -6,7 +6,7 @@ if (Meteor.isClient) {
 
 Template.createIncident.rendered = function (){
 
-
+	$('.modal').modal('hide')	
 
 		unresolvedArray=[]
 		var item;

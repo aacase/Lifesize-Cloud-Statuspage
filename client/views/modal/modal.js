@@ -28,7 +28,7 @@ Template['modal'].events({
 });
 
 Template.quickForm.events=({
-	"click .button": function(event){
+	"click .submit.button": function(event){
 		itemsArray=[]
 		var items = incidentCalendar.find();
 			items.forEach(function(item) {
@@ -44,6 +44,7 @@ Template.quickForm.events=({
 	  		}
 
 	});
+		$('.modal').modal('hide')	
 		Router.go('/admin')
 		}
 
