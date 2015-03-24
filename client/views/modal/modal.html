@@ -1,0 +1,11 @@
+<template name="modal">
+    <div class="ui modal {{name}} {{type}}">
+       <i class="close icon"></i>
+       <div class="header">
+         {{title}}
+       </div>
+       <div class="content">
+         {{> quickForm collection="incidentCalendar" type=type doc=updateDoc}}
+       </div>
+     </div>
+</template>

@@ -9,9 +9,56 @@
 
     		  <!--   {{ >quickForm collection="incidentCalendar" id="insertCalendarForm" type="update"}} -->
 
-    		  
+    		 <div class="ui segment">
+    		     <p>This is a set of simple examples used to demo the package and also run some tests.</p>
+    		   </div>
+    		   <h2>Incidents</h2>
+    		   <table class="ui table">
+    		     <thead>
+    		       <th>Name</th>
+    		       <th>Breed</th>
+    		       <th>Fave thing</th>
+    		       <th>Actions</th>
+    		     </thead>
+    		     <tbody>
+    		     {{#each customCurrentIncidentEvents}}
+    		       <tr>
+    		         <td>{{title}}</td>
+    		         <td>{{impact}}</td>
+    		         <td>{{content}}</td>
+    		         <td>
+    		           <div class="ui icon button delete-incident">
+    		             <i class="delete icon"></i>
+    		           </div>
+    		           <div class="ui icon button edit-incident">
+    		             <i class="edit icon"></i>
+    		           </div>
+    		         </td>
+    		       </tr>
+    		     {{/each}}
+    		     </tbody>
+    		   </table>
+    		   <div class="ui button add-dog">
+    		     <i class="plus icon"></i>
+    		     Add an Incident
+    		   </div>
+    		   {{> modal title="Add an Incident" type="insert"}}
+    		   {{> modal title="Update an Incident" type="update"}}
     	</div>
     	<div class="one wide column"></div>
     </div>
 </div>
 </template>
+
+<!-- <template name="modal">
+  <div class="ui modal {{name}} {{type}}">
+    <i class="close icon"></i>
+    <div class="header">
+      {{title}}
+    </div>
+    <div class="content">
+      {{> quickForm collection="Dogs" type=type doc=updateDoc}}
+    </div>
+  </div>
+</template> -->
+
