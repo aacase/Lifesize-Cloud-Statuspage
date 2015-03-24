@@ -28,7 +28,8 @@ Template.createIncident.helpers({
 	customCurrentIncidentEvents: function(){return Session.get('lifesizeUnresolved')},
 	currentMaintEvents: function(){return Session.get('activeMaint')},
 	upTimeStatus: function(){return Session.get('upTime')},
-	ScheduledMaintenanceEvents: function(){return Session.get('schedMaint')}
+	ScheduledMaintenanceEvents: function(){return Session.get('schedMaint')},
+	incidentCalendar:function(){incidentCalendar.find()}
 
 });
 
@@ -41,12 +42,14 @@ Template.createIncident.events=({
 
 "click .add-dog": function(){
     Session.set("updateDoc", null);
-    $(".modal.insert").modal("show")}
-  // "click .edit-dog": ->
-  //   Session.set "updateDoc", @
-  //   $(".modal.update").modal("show")
-  // "click .delete-dog": ->
-  //   Dogs.remove @_id
+    $(".modal.insert").modal("show")},
+
+  "click .edit-incident": function(){
+    Session.set("updateDoc", this);
+    $(".modal.update").modal("show")},
+
+  "click .delete-incident": function(){
+    incidentCalendar.remove(this._id)}
 
 });
 
