@@ -1,3 +1,9 @@
+if (Meteor.isClient) {
+  // This code only runs on the client
+  Meteor.subscribe("incidentCalendar");
+}
+
+
 Template.createIncident.rendered = function (){
 
 
@@ -11,6 +17,7 @@ Template.createIncident.rendered = function (){
   			Session.set('newCurrentIncidents', true);
   			unresolvedArray.push(item);
   			console.log(unresolvedArray)
+  			Session.set('counter', unresolvedArray.length)
 
   		}
   		Session.set("lifesizeUnresolved",unresolvedArray)
@@ -29,7 +36,8 @@ Template.createIncident.helpers({
 	currentMaintEvents: function(){return Session.get('activeMaint')},
 	upTimeStatus: function(){return Session.get('upTime')},
 	ScheduledMaintenanceEvents: function(){return Session.get('schedMaint')},
-	incidentCalendar:function(){incidentCalendar.find()}
+	incidentCalendar:function(){return incidentCalendar.find()},
+	incidentsCounter:function(){return Session.get('lifesizeUnresolved').length}
 
 });
 
@@ -49,23 +57,21 @@ Template.createIncident.events=({
     $(".modal.update").modal("show")},
 
   "click .delete-incident": function(){
-    incidentCalendar.remove(this._id)}
+    incidentCalendar.remove(this._id);
+			unresolvedArray=[]
+			var item;
+			var items = incidentCalendar.find();
+			items.forEach(function(item) {
+	  		if (item.resolved==false ){
+	  			console.log('kitty!')
+	  			Session.set('newCurrentIncidents', true);
+	  			unresolvedArray.push(item);
+	  			console.log(unresolvedArray)
+	  			Session.set('counter', unresolvedArray.length)
+
+	  		}
+	  		Session.set("lifesizeUnresolved",unresolvedArray)
+			});
+	}
 
 });
-
-
-
-// $('.emailCall').click(function(){
-// 		var sp = new StatusPage.page({ page : '7c66ps9x5g90' });
-// 		  sp.subscribe({
-// 		    subscriber : {
-// 		      email : $('.emailField').val()
-// 		    },
-// 		    success : function (response) {
-// 		      console.log(response.email)
-// 		      $('.ui.modal.secondModal').modal('show');
-
-// 		    }
-// 		  });
-
-// 	});
