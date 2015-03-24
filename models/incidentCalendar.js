@@ -12,6 +12,9 @@ incidentCalendar.attachSchema(
       type: Date,
       denyUpdate: true
     },
+    applies_to:{
+      type: String
+    },
     resolved:{
       type: Boolean
     }
