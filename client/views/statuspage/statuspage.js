@@ -17,12 +17,17 @@ Template.statuspage.rendered = function (){
   		if (item.resolved==false ){
   			console.log('kitty!')
   			Session.set('newCurrentIncidents', true);
+  			if(item.applies_to=="Management Console"){
+  				Session.set('mgmt', "Outage");
+  			}
   			unresolvedArray.push(item);
   			console.log(unresolvedArray)
 
   		}
   		Session.set("lifesizeUnresolved",unresolvedArray)
 		});
+
+
 
 	$('.context.example .ui.sidebar').sidebar({
 	    context: $('.context.example .bottom.segment')
@@ -102,11 +107,17 @@ Template.statuspage.rendered = function (){
 	});
 
 	//API call for subservices of Lifesize Cloud
-	$.get('https://7c66ps9x5g90.statuspage.io/api/v1/components.json', function (data) {
-	  Session.set('subServices', data.components);
-	  console.log('Subservices data return', Session.get('subServices'));
+	// $.get('https://7c66ps9x5g90.statuspage.io/api/v1/components.json', function (data) {
+	//   Session.set('subServices', data.components);
+	//   console.log('Subservices data return', Session.get('subServices'));
 
-	});
+	// });
+	if (Session.get('newCurrentIncidents')){
+		// Session.set('mgmt', "Outage");
+
+		//add applies_to rules here
+	}
+	else Session.set('mgmt', "Operational")
 
 
 	//API call for Active Scheduled Maintenance 
@@ -181,7 +192,10 @@ Template.statuspage.helpers({
 	customCurrentIncidentEvents: function(){return Session.get('lifesizeUnresolved')},
 	currentMaintEvents: function(){return Session.get('activeMaint')},
 	upTimeStatus: function(){return Session.get('upTime')},
-	ScheduledMaintenanceEvents: function(){return Session.get('schedMaint')}
+	ScheduledMaintenanceEvents: function(){return Session.get('schedMaint')},
+	mgmt: function  () { return Session.get('mgmt')
+		// body...
+	}
 
 });
 
