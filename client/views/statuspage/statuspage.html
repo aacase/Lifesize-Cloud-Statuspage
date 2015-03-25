@@ -20,26 +20,26 @@
 					</tr>
 				</thead>
 				<tbody>
-					{{#each subServicesTable}}
-					{{#if isOperational this}}
+					<!-- {{#each subServicesTable}} -->
+					{{#if isOperational mgmt}}
 					<tr class="codeGreen">
 						
-						<td>{{name}}</td>
-						<td>{{status}}</td>
+						<td>Management Console</td>
+						<td>{{mgmt}}</td>
 					</tr>
 					{{else}}
 					<tr class="codeRed">
 						
-						<td>{{name}}</td>
-						<td>{{status}}</td>
-					</tr>
-					{{/if}}
-					{{/each}}
-					<tr>
 						<td>Management Console</td>
 						<td>{{mgmt}}</td>
 					</tr>
-					
+					{{/if}}
+					<!-- {{/each}} -->
+					<!-- <tr>
+						<td>Management Console</td>
+						<td>{{mgmt}}</td>
+					</tr>
+					 -->
 				</tbody>
 				
 			</table>

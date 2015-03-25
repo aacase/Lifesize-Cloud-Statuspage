@@ -27,7 +27,7 @@ Template.registerHelper('constant', function (what) {
 });
 
 Template.registerHelper('isOperational', function (handlebar) {
-  if (handlebar.status == "operational"){
+  if (handlebar == "Operational"){
     // console.log("Yippe Cai YAY");
    
    return handlebar;
